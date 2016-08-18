@@ -1,0 +1,14 @@
+http://blog.csdn.net/qingzijin2010/article/details/52037723
+1、下载libpng文件目录:“cocos2dx\platform\third_party\Android\prebuilt”
+     下载地址：http://pan.baidu.com/s/1slhAznv
+2、修改“cocos2dx” 目录下的 “Android.mk” 文件
+   修改内容：
+            原内容：LOCAL_WHOLE_STATIC_LIBRARIES := cocos_libpng_static
+           修改为：
+                      LOCAL_WHOLE_STATIC_LIBRARIES := cocos_libzlib_static
+                       LOCAL_WHOLE_STATIC_LIBRARIES += cocos_libpng_static
+           原内容：:$(call import-module,libpng)
+           修改为：  
+                      $(call import-module,libzlib)
+                     $(call import-module,libpng)
+3、重新编译so文件即可
